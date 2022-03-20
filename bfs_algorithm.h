@@ -12,6 +12,6 @@ kolejka usun_poczatek(kolejka head);
 int sprawdz_czy_odwiedzone(int *odwiedzone,int liczba_wierzcholkow);
 kolejka dodaj_do_kolejki(kolejka head,listV_t wierzcholek,int *odwiedzone);
 int czy_pusta(kolejka head);
-int BFS_ALGORITHM(int numer_wierzcholka,int liczba_wierzcholkow,listV_t *graph);
+int BFS_ALGORITHM(int liczba_wierzcholkow,listV_t *graph);
 void pisz_kolejka(kolejka kol);
 #endif

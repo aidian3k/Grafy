@@ -5,7 +5,11 @@ kolejka dodaj_na_koniec(kolejka head,int wierzcholek){
     kolejka nowa=malloc(sizeof(kolejka));
     nowa->next=NULL;
     nowa->numer=wierzcholek;
-    if(head==NULL) return nowa;
+    if(head==NULL)
+    {
+        head=nowa;
+        return nowa;
+    }
     else{
         kolejka itr=head;
         while(itr->next!=NULL) itr=itr->next;
@@ -49,19 +53,17 @@ void pisz_kolejka(kolejka kol){
 	}
 }
 
-int BFS_ALGORITHM(int numer_wierzcholka,int liczba_wierzcholkow,listV_t *graph) /* Biore numer wierzcholka, od ktorego chce zaczac poszukiwanie, liczba wierzcholkow, caly graf */{
-    int *odwiedzone=malloc(liczba_wierzcholkow*sizeof(int));
+int BFS_ALGORITHM(int liczba_wierzcholkow,listV_t *graph) /* Biore numer wierzcholka, od ktorego chce zaczac poszukiwanie, liczba wierzcholkow, caly graf */{
+    int odwiedzone[liczba_wierzcholkow];
     for(int i=0;i<liczba_wierzcholkow;i++) odwiedzone[i]=0; //0 symbolizuje, ze dany wierzcholek nie byl odwiedzony, natomiast 1, ze byl odwiedzony
-    odwiedzone[numer_wierzcholka]=1;
+    odwiedzone[0]=1;
     kolejka kol=NULL;
     int n;
-    kol=dodaj_na_koniec(kol,numer_wierzcholka);
+    kol=dodaj_na_koniec(kol,0);
     while(czy_pusta(kol)){
         n=kol->numer;
         kol=usun_poczatek(kol);
         kol=dodaj_do_kolejki(kol,graph[n],odwiedzone);
-        pisz_kolejka(kol);
-        printf("\n");
     }
     if(sprawdz_czy_odwiedzone(odwiedzone,liczba_wierzcholkow)) return 1;
     else return 0;

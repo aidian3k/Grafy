@@ -10,7 +10,9 @@ int main(int argc, char **argv) {
 	a=0;
 	b=1;
 	listV_t *graph=generujGraf(W,K,a,b);
-	printf("%d",BFS_ALGORITHM(1,W*K,graph));
+	zapisz_graf_do_pliku(graph,W,K,"wyjscie");
+	if(BFS_ALGORITHM(W*K,graph)==1) printf("Spojny");
+	else printf("Niespojny");
 }
 
 
