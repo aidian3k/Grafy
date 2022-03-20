@@ -86,7 +86,7 @@ void zapisz_graf_do_pliku(listV_t *graph, int W, int K, char *plik) {
 		fprintf(out, "\t ");
 		listV_t itr=graph[i];
 		while(itr!= NULL) {
-			fprintf(out, "%d :%.16Lf ", graph[i]->Vn, graph[i]->waga);
+			fprintf(out, "%d :%.16Lf ", itr->Vn, itr->waga);
 			itr=itr->next;
 		}
 		fprintf(out, "\n");
