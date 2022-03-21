@@ -2,6 +2,7 @@
 #include "bfs_algorithm.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "dijkstra_algorithm_slaby.h"
 int main(int argc, char **argv) {
 	int W,K;
 	double a,b;
@@ -11,8 +12,7 @@ int main(int argc, char **argv) {
 	b=1;
 	listV_t *graph=generujGraf(W,K,a,b);
 	zapisz_graf_do_pliku(graph,W,K,"wyjscie");
-	if(BFS_ALGORITHM(W*K,graph)==1) printf("Spojny");
-	else printf("Niespojny");
+	DIJKSTRA_ALGORITHM(W*K,0,1,graph);
 }
 
 
