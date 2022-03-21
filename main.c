@@ -1,16 +1,18 @@
 #include "graph.h"
+#include "bfs_algorithm.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 int main(int argc, char **argv) {
-	int W, K; //liczba wierszy i kolumn
-	int wymiary[2];
-	long double a, b; // zakres wag krawedzi w generowanym grafie <a, b>
-	listV_t *my_graph = czytaj_graf_z_pliku(fopen(argv[1],"r"),wymiary);
-	W=wymiary[0];
-	K=wymiary[1];	
-	zapisz_graf_do_pliku(my_graph, W, K, "wyjscie");
-	return 0;	
+	int W,K;
+	double a,b;
+	W=atoi(argv[1]);
+	K=atoi(argv[2]);
+	a=0;
+	b=1;
+	listV_t *graph=generujGraf(W,K,a,b);
+	zapisz_graf_do_pliku(graph,W,K,"wyjscie");
+	if(BFS_ALGORITHM(W*K,graph)==1) printf("Spojny");
+	else printf("Niespojny");
 }
 
 
