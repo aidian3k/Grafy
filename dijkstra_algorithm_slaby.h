@@ -1,4 +1,3 @@
-#include "graph.h"
 #ifndef DIJKSTRAH_ALGORITHM
 #define DIJKSTRAH_ALGORITHM
 double DIJKSTRA_ALGORITHM(int liczba_wierzcholkow,int wierzcholek1,int wierzcholek2, listV_t *graph);
