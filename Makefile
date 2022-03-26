@@ -3,6 +3,7 @@ all:
 	cc -c main.c
 	cc -c bfs_algorithm.c
 	cc -c dijkstra_algorithm_slaby.c
-	cc main.o graph.o bfs_algorithm.o dijkstra_algorithm_slaby.o
+	cc -c errors.c
+	cc -o grafy main.o graph.o bfs_algorithm.o dijkstra_algorithm_slaby.o errors.o
 clean:
 	rm *.o

@@ -69,3 +69,15 @@ int BFS_ALGORITHM(int liczba_wierzcholkow,listV_t *graph) /* Biore numer wierzch
     else return 0;
 
 }
+
+int BFS_GOING(int *wymiary,listV_t *graph){
+    printf("Wywolano prgram z flaga BFS,sprawdzam czy podany graf jest spojny:\n\t");
+	if(BFS_ALGORITHM(wymiary[0]*wymiary[1],graph)==1){
+		printf("Podany graf jest spojny!\n");
+		return 1;
+	}
+	else{
+		printf("Podany graf nie jest spojny!\n");
+		return 0;
+	}
+}

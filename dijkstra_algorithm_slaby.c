@@ -1,6 +1,6 @@
 #include "graph.h"
 #include <limits.h>
-
+#include "errors.h"
 
 int najmniejsza_waga(double *dojscia,int liczba_wierzcholkow,int *przetworzone){
     int ans;
@@ -35,6 +35,16 @@ double DIJKSTRA_ALGORITHM(int liczba_wierzcholkow,int wierzcholek1,int wierzchol
         }
         iteracje++; //Przy kazdej iteracji zostaje przetworzony dokladnie jeden wierzcholek, po to jest ta zmienna
     }
-    for(int i=0;i<liczba_wierzcholkow;i++) printf("%d:%g\n",i,dojscia[i]);
-    return 0;
+    return dojscia[wierzcholek2];
+}
+
+int DIJKSTRA_GOING(int *wymiary,int wierzcholek_1,int wierzcholek_2, listV_t *graph){
+		if((wierzcholek_1>=1 && wierzcholek_1<=wymiary[0]*wymiary[1]) && (wierzcholek_2>=1 && wierzcholek_2<=wymiary[0]*wymiary[1])){
+			printf("Najkrotsze polaczenie pomiedzy wierzcholkiem %d, a wierzcholkiem %d\n\twynosi: %g",wierzcholek_1,wierzcholek_2,DIJKSTRA_ALGORITHM(wymiary[1]*wymiary[0],wierzcholek_1-1,wierzcholek_2-1,graph));
+            return 1;
+        }
+		else{
+			INPUT_OUT_OF_RANGE();
+			return -1;
+		}
 }
