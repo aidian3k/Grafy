@@ -1,6 +1,6 @@
 #include "graph.h"
 #include "bfs_algorithm.h"
-
+#include <stdlib.h>
 kolejka dodaj_na_koniec(kolejka head,int wierzcholek){
     kolejka nowa=malloc(sizeof(kolejka));
     nowa->next=NULL;
@@ -19,7 +19,9 @@ kolejka dodaj_na_koniec(kolejka head,int wierzcholek){
 }
 
 kolejka usun_poczatek(kolejka head){
+    kolejka tmp=head;
     head=head->next;
+    free(tmp);
     return head;
 }
 
