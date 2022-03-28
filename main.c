@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
 int main(int argc, char **argv) {
 	if(argc<=2) exit(SHOW_HELP());
 	else if(argc==3){
@@ -97,8 +98,9 @@ int main(int argc, char **argv) {
 			listV_t *graph=czytaj_graf_z_pliku(in,wymiary);
 			if((strcmp(argv[6],"--bfs")==0) && (strcmp(argv[3],"--dijkstra")==0)){
 				BFS_GOING(wymiary,graph);
-				if(isdigit(argv[4][0]) && isdigit(argv[5][0])) DIJKSTRA_GOING(wymiary,atoi(argv[4]),atoi(argv[5]),graph);
-    			else{
+				if(isdigit(argv[4][0]) && isdigit(argv[5][0])) 
+					DIJKSTRA_GOING(wymiary,atoi(argv[4]),atoi(argv[5]),graph);
+    				else{
 					free_graph(graph,wymiary);
 					exit(INPUT_NOT_INT());
 				}
@@ -115,6 +117,7 @@ int main(int argc, char **argv) {
 				free_graph(graph,wymiary);
 				exit(SHOW_HELP());
 			}
+			free_graph(graph,wymiary);
 		}
 		else exit(SHOW_HELP());
 	}

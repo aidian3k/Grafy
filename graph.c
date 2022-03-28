@@ -14,6 +14,8 @@
 listV_t * generujGraf(int W, int K, long double a, long double b) {
 	int v = W*K;
 	listV_t *graph = malloc(v * sizeof *graph);
+	for(int x=0; x<v; x++)
+		graph[x] = NULL;
 	srand(time(NULL));
 	int i=0; //lewy górny róg
 	graph[i] = dodaj(graph[i], i+1, losuj(a, b)); 
@@ -64,12 +66,13 @@ listV_t * generujGraf(int W, int K, long double a, long double b) {
 
 listV_t dodaj(listV_t listV, int vn, long double w) { 
 	// vn numer wierzcholka, w waga   
+
 	listV_t n = malloc(sizeof *n);
 	n->Vn = vn;
 	n->waga = w;
 	n->next = NULL;
 	if(listV == NULL) return n;
-	listV_t itr= listV;
+	listV_t itr = listV;
 	while(itr-> next!= NULL) itr=itr->next;
 	itr->next = n;
 	return listV;
@@ -91,6 +94,7 @@ void zapisz_graf_do_pliku(listV_t *graph, int W, int K, char *plik) {
 		}
 		fprintf(out, "\n");
 	}
+	fclose(out);
 }
 
 void free_graph(listV_t *graph, int *wymiary){
@@ -104,5 +108,6 @@ void free_graph(listV_t *graph, int *wymiary){
 		}
 	}
 	free(graph);
+	
 }
 

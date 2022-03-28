@@ -24,6 +24,8 @@ listV_t *czytaj_graf_z_pliku(FILE *in,int *wymiary) /*To int* to tablica, w ktor
 	int W=wymiary[0],K=wymiary[1];
 	while(fgetc(in)!='\n');
 	listV_t *graph=malloc(sizeof(*graph)*W*K);
+	for(int x=0; x<W*K; x++)
+		graph[x] = NULL;
 	char buf[1024];
 	int linia=0;
 	while(fgets(buf,1024,in)!=NULL){
@@ -32,6 +34,8 @@ listV_t *czytaj_graf_z_pliku(FILE *in,int *wymiary) /*To int* to tablica, w ktor
 			if(pom!=NULL){
 				if(sscanf(pom,"%d%lf%d%lf",&w1,&n1,&w2,&n2)!=4){
 					free_graph(graph,wymiary);
+					fclose(in);
+					free(pom);
 					exit(INPUT_FORMAT_ERR());
 				}
 				graph[linia]=dodaj(graph[linia],w1,n1);
@@ -39,14 +43,19 @@ listV_t *czytaj_graf_z_pliku(FILE *in,int *wymiary) /*To int* to tablica, w ktor
 			}
 			else{
 				free_graph(graph,wymiary);
+				fclose(in);
+				free(pom);
 				exit(MALLOC_ERR());
 			}
+			free(pom);
 		}
 		else if(linia>0 && linia<K-1 || linia>W*K-K && linia<W*K-1 || linia%K==0 || linia%K==K-1) /* Potem trzy wierzcholki*/{
 			char *pom=kopia_linii(buf);
 			if(pom!=NULL){
 				if(sscanf(pom,"%d%lf%d%lf%d%lf",&w1,&n1,&w2,&n2,&w3,&n3)!=6){
 					free_graph(graph,wymiary);
+					fclose(in);
+					free(pom);
 					exit(INPUT_FORMAT_ERR()); 
 				}
 				graph[linia]=dodaj(graph[linia],w1,n1);
@@ -55,14 +64,19 @@ listV_t *czytaj_graf_z_pliku(FILE *in,int *wymiary) /*To int* to tablica, w ktor
 			}
 			else{
 				free_graph(graph,wymiary);
+				fclose(in);
+				free(pom);
 				exit(MALLOC_ERR());
 			}
+			free(pom);
 		}
 		else /* Na koniec 4 */{
 			char *pom=kopia_linii(buf);
 			if(pom!=NULL){
 				if(sscanf(pom,"%d%lf%d%lf%d%lf%d%lf",&w1,&n1,&w2,&n2,&w3,&n3,&w4,&n4)!=8){
 					free_graph(graph,wymiary);
+					fclose(in);
+					free(pom);
 					exit(INPUT_FORMAT_ERR());
 				}
 				graph[linia]=dodaj(graph[linia],w1,n1);
@@ -72,10 +86,14 @@ listV_t *czytaj_graf_z_pliku(FILE *in,int *wymiary) /*To int* to tablica, w ktor
 			}
 			else{
 				free_graph(graph,wymiary);
+				fclose(in);
+				free(pom);
 				exit(MALLOC_ERR());
 			}
+			free(pom);
 		}
 		linia++;
 	}
+	fclose(in);
 	return graph;
 }

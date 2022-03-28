@@ -35,6 +35,7 @@ double DIJKSTRA_ALGORITHM(int liczba_wierzcholkow,int wierzcholek1,int wierzchol
         }
         iteracje++; //Przy kazdej iteracji zostaje przetworzony dokladnie jeden wierzcholek, po to jest ta zmienna
     }
+   
     return dojscia[wierzcholek2];
 }
 

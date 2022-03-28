@@ -1,6 +1,18 @@
 #include "graph.h"
 #include "bfs_algorithm.h"
 #include <stdlib.h>
+
+void free_kolejka(kolejka kol, int dlugosc){
+	kolejka next=NULL;
+	while(kol!=NULL){
+		next=kol->next;
+		free(kol);
+		kol=next;
+	}
+	free(kol);
+	free(next);
+}
+
 kolejka dodaj_na_koniec(kolejka head,int wierzcholek){
     kolejka nowa=malloc(sizeof(kolejka));
     nowa->next=NULL;
@@ -53,6 +65,8 @@ void pisz_kolejka(kolejka kol){
 		printf("%d ",itr->numer);
 		itr=itr->next;
 	}
+	free(itr);
+	//free_kolejka(itr, liczba_wierzcholkow);
 }
 
 int BFS_ALGORITHM(int liczba_wierzcholkow,listV_t *graph) /* Biore numer wierzcholka, od ktorego chce zaczac poszukiwanie, liczba wierzcholkow, caly graf */{
@@ -67,6 +81,8 @@ int BFS_ALGORITHM(int liczba_wierzcholkow,listV_t *graph) /* Biore numer wierzch
         kol=usun_poczatek(kol);
         kol=dodaj_do_kolejki(kol,graph[n],odwiedzone);
     }
+    //free_kolejka(kol, liczba_wierzcholkow);
+    free(kol);
     if(sprawdz_czy_odwiedzone(odwiedzone,liczba_wierzcholkow)) return 1;
     else return 0;
 
