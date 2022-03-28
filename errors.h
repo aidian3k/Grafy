@@ -1,12 +1,14 @@
 #ifndef ERRORS_H
 #define ERRORS_H
 
-void GENERATE_ERROR();
-void show_help();
-void FILE_ERROR();
-void DIJKSTRA_ERROR();
-void WEIGHT_ERROR();
-void INPUT_NOT_INT();
-void INPUT_OUT_OF_RANGE();
-void INPUT_INT_ERR();
+int GENERATE_ERROR();
+int SHOW_HELP();
+int FILE_ERROR();
+int DIJKSTRA_ERROR();
+int WEIGHT_ERROR();
+int INPUT_NOT_INT();
+int INPUT_OUT_OF_RANGE();
+int INPUT_INT_ERR();
+int INPUT_FORMAT_ERR();
+int MALLOC_ERR();
 #endif

@@ -44,6 +44,7 @@ int DIJKSTRA_GOING(int *wymiary,int wierzcholek_1,int wierzcholek_2, listV_t *gr
             return 1;
         }
 		else{
+            free_graph(graph,wymiary);
 			INPUT_OUT_OF_RANGE();
 			return -1;
 		}
