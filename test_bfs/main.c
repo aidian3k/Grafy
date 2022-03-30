@@ -18,12 +18,14 @@ int main(int argc, char **argv) {
 	listV_t *graph=czytaj_graf_z_pliku(dane21,wymiary); 
 	assert(BFS_GOING(wymiary,graph) == 1); //test dla grafu spojnego
 	free_graph(graph,wymiary);
+	printf("TEST 21 OK (BFS)\n");
 	
 	//TEST 22
 	FILE *dane22=fopen("graf_niespojny.txt","r");
 	graph=czytaj_graf_z_pliku(dane22,wymiary); 
 	assert(BFS_GOING(wymiary,graph) == 0); //test dla grafu spojnego
 	free_graph(graph,wymiary);
+	printf("TEST 22 OK (BFS)\n");
 	
 }
 

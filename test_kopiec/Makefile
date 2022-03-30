@@ -1,8 +1,7 @@
 all:
-	cc -c pq.c
 	cc -c main.c
-	cc main.o pq.o 
-
+	cc -c pq.c
+	cc -o kopiec pq.o main.o
+	./kopiec
 clean:
 	rm *.o
-	

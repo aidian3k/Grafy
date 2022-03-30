@@ -38,6 +38,7 @@ int main( int argc, char **argv ) {
 		x = pop_from_pq(pq);
 		assert(test11_zdjete[i].d == x.d && test11_zdjete[i].w == x.w);
 	}
+	printf("TEST 11 OK (KOPIEC)\n");
 	
 	//test12
 	FILE *dane2 = fopen("dane2.txt", "r");
@@ -54,6 +55,7 @@ int main( int argc, char **argv ) {
 		x = pop_from_pq(pq);
 		assert(test12_zdjete[i].d == x.d && test12_zdjete[i].w == x.w);
 	}
+	printf("TEST 12 OK (KOPIEC)\n");
 	
 	//test13
 	FILE *dane3 = fopen("dane3.txt", "r");
@@ -75,6 +77,7 @@ int main( int argc, char **argv ) {
 		x = pop_from_pq(pq);
 		assert(test13_zdjete[i].d == x.d && test13_zdjete[i].w == x.w);
 	}
+	printf("TEST 13 OK (KOPIEC)\n");
 
 	free_pq( pq );
 	return 0;
