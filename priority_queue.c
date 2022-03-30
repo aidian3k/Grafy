@@ -1,1 +1,0 @@
-/* Tutaj ma być kopiec do dijkstry */
