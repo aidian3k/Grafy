@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
 		if(strcmp(argv[1],"--generate")==0){
 			if(atoi(argv[2])<=0 || atoi(argv[3])<=0) exit(INPUT_INT_ERR());
 			if(atof(argv[4])<0 || atof(argv[5])<0) exit(WEIGHT_ERROR());
-			printf("Generuje graf w kratke do pliku mygraph");
+			printf("Generuje graf w kratke do pliku mygraph\n");
 			listV_t *graph=generujGraf(atoi(argv[2]),atoi(argv[3]),atof(argv[4]),atof(argv[5]));
 			zapisz_graf_do_pliku(graph,atoi(argv[2]),atoi(argv[3]),"mygraph");
 			int wymiary[2];
