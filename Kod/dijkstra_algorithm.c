@@ -16,7 +16,7 @@ int najmniejsza_waga(double *dojscia,int liczba_wierzcholkow,int *przetworzone){
     return ans;
 }
 
-/* Trzeba dodac kopiec, by przyspieszyc algorytm, na razie taki naiwny */
+/* Tutaj jest algorytm dijkstry implementowany w sposob naiwny(zlozonosc n^2)) */
 double DIJKSTRA_ALGORITHM(int liczba_wierzcholkow,int wierzcholek1,int wierzcholek2, listV_t *graph){
     int przetworzone[liczba_wierzcholkow]; //Tworze tablice, w ktora będzie mi mowic, ktore wierzcholki juz algorytm przetworzyl, a ktore nie( 0 jesli nie przetworzyl i 1 jesli przetworzyl)
     for(int i=0;i<liczba_wierzcholkow;i++) przetworzone[i]=0; //Na początku wszystkie nie zostały przetworzone

@@ -74,3 +74,11 @@ int WYMIARY_ERROR(){
     printf("Liczba kolumn i wierszy musi być >= 1.\n");
     return 0;
 }
+
+int CHECK_IF_DIGIT(char *wyraz1, char* wyraz2){
+	for(int i=0;wyraz2[i]!='\0';i++)
+		if(wyraz2[i]>'9' || wyraz2[i]<'0') return 0;
+	for(int i=0;wyraz1[i]!='\0';i++)
+                if(wyraz1[i]>'9' || wyraz1[i]<'0') return 0;
+	return 1; 
+}

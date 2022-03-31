@@ -57,6 +57,7 @@ int main(int argc, char **argv) {
 	else if(argc==6){
 		if(strcmp(argv[1],"--generate")==0){
 			if(atoi(argv[2])<=0 || atoi(argv[3])<=0) exit(INPUT_INT_ERR());
+			if(CHECK_IF_DIGIT(argv[2],argv[3])==0) exit(INPUT_INT_ERR());
 			if(atof(argv[4])<0 || atof(argv[5])<0) exit(WEIGHT_ERROR());
 			printf("Generuje graf w kratke do pliku mygraph\n");
 			listV_t *graph=generujGraf(atoi(argv[2]),atoi(argv[3]),atof(argv[4]),atof(argv[5]));
@@ -73,7 +74,7 @@ int main(int argc, char **argv) {
 			int wymiary[2];
 			listV_t *graph=czytaj_graf_z_pliku(in,wymiary);
 			if(strcmp(argv[3],"--dijkstra")==0){
-				if(isdigit(argv[4][0]) && isdigit(argv[5][0])) DIJKSTRA_GOING(wymiary,atoi(argv[4]),atoi(argv[5]),graph);
+				if(CHECK_IF_DIGIT(argv[4],argv[5])==1) DIJKSTRA_GOING(wymiary,atoi(argv[4]),atoi(argv[5]),graph);
 				else{
 					free_graph(graph,wymiary);
 					exit(INPUT_NOT_INT());
@@ -98,7 +99,7 @@ int main(int argc, char **argv) {
 			listV_t *graph=czytaj_graf_z_pliku(in,wymiary);
 			if((strcmp(argv[6],"--bfs")==0) && (strcmp(argv[3],"--dijkstra")==0)){
 				BFS_GOING(wymiary,graph);
-				if(isdigit(argv[4][0]) && isdigit(argv[5][0])) 
+				if(CHECK_IF_DIGIT(argv[4],argv[5])==1) 
 					DIJKSTRA_GOING(wymiary,atoi(argv[4]),atoi(argv[5]),graph);
     				else{
 					free_graph(graph,wymiary);
@@ -107,7 +108,7 @@ int main(int argc, char **argv) {
 			}
 			else if((strcmp(argv[3],"--bfs")==0) && (strcmp(argv[4],"--dijkstra")==0)){
 				BFS_GOING(wymiary,graph);
-				if(isdigit(argv[5][0]) && isdigit(argv[6][0]))
+				if(CHECK_IF_DIGIT(argv[5],argv[6])==1)
 					DIJKSTRA_GOING(wymiary,atoi(argv[5]),atoi(argv[6]),graph);
     				else{
 					free_graph(graph,wymiary);

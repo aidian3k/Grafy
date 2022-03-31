@@ -12,4 +12,6 @@ int INPUT_INT_ERR();
 int INPUT_FORMAT_ERR();
 int MALLOC_ERR();
 int WYMIARY_ERROR();
+int CHECK_IF_DIGIT(char*, char *);
+
 #endif
